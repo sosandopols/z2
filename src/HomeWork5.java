@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class HomeWork5 {
     public static void main(String[] args) {
@@ -39,6 +40,5 @@ public class HomeWork5 {
         for (int i = 3; i < n; i++){
             a[i] = a[i - 1] + a[i - 2] - 2 * a[i - 3];
         }
-        System.out.println(Arrays.toString(a));
     }
 }
