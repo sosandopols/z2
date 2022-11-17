@@ -2,32 +2,63 @@ import java.util.Arrays;
 
 public class FavoriteSong {
     public static void main(String[] args) {
-        int n = 10, m = 2 * n - 1;
-        int[][] arr = new int[n][m];
-        arr[0][m / 2] = 1;
-        for (int i = 1; i < n; i++) {
-            int l = m / 2 - i, r = (m + 1) / 2 + i;
-            for (int j = l; j < r; j++) {
-                if (j == 0) arr[i][j] = arr[i - 1][j + 1];
-                else if (j == m - 1) arr[i][j] = arr[i - 1][j - 1];
-                else arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j + 1];
-            }
-        }
-        for (int i = 0; i < n; i++)
-            System.out.println(Arrays.toString(arr[i]));
-        /*int rows=7, cols = 2*rows-1;
-        int arr[][] = new int[rows][cols];
-        for (int i=0; i<rows; i++)
-            for (int j=0; j<cols; j++){
-                if (i==0)
-                    arr[0][cols/2] = 1;
-                else if (j==0) arr[i][j] = arr[i-1][j+1];
-                else if (j==cols-1) arr[i][j] = arr[i-1][j-1];
-                else arr[i][j] = arr[i-1][j-1]+arr[i-1][j+1];
-            }
-        for (int i=0; i<rows; i++)
-            System.out.println(Arrays.toString(arr[i]));
+        //Вычислить площади трех кругов и длины их окружностей
+        //Императивный
+        double r1 = 1;
+        double r2 = 2;
+        double r3 = 3;
+        double s1 = Math.PI * r1 * r1;
+        double s2 = Math.PI * r2 * r2;
+        double s3 = Math.PI * r3 * r3;
+        double l1 = 2 * Math.PI * r1;
+        double l2 = 2 * Math.PI * r2;
+        double l3 = 2 * Math.PI * r3;
 
-         */
+        //Функциональный
+        s1 = areaCircle(r1);
+        s2 = areaCircle(r2);
+        s3 = areaCircle(r3);
+
+        //ООП
+        Circle circle = new Circle();
+        for (int i = 0; i < 3; i++) {
+            circle.setRadius(i + 1);
+            System.out.println(circle.area());
+        }
+    }
+
+    static double areaCircle(double r) {
+        return Math.PI * r * r;
+    }
+
+    static double lengthCircle(double r) {
+        return Math.PI * 2 * r;
     }
 }
+
+class Circle {
+    private double radius; //рвдиус круга
+
+    public double area() {
+        return Math.PI * radius * radius;
+    }
+
+    public double length() {
+        return Math.PI * 2 * radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+}
+/*
+for (int i = n; i > 0; i--) {
+        int k = n;
+        for (int j = i; j > 0; j--) {
+        System.out.print(" ");
+        }
+        for (int j = 0; j < n - i + 1; j++) {
+        System.out.print(i + j + " ");
+        }
+        System.out.println();
+        }*/
